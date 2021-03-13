@@ -1,0 +1,14 @@
+[user]
+	name = Mikołaj Rozwadowski
+{{ if (hasPrefix "IN-PC" .chezmoi.hostname) }} 
+	email = m.rozwadowski@insys.pl
+{{ else }}
+	email = hejmsdz@users.noreply.github.com
+{{ end }}
+[core]
+	filemode = false
+	excludesfile = ~/.gitignore.global
+{{ if (eq .chezmoi.os "darwin") }}
+[credential]
+	helper = osxkeychain
+{{ end }}
