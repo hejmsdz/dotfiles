@@ -78,6 +78,7 @@ noremap <F3> :Autoformat<CR>
 " edit and apply settings
 nnoremap <leader>, :edit $MYVIMRC<CR>
 command! Src source $MYVIMRC
+command! SudoW :execute ':silent w !sudo tee % > /dev/null' | :edit!
 
 " python
 let g:python3_host_prog='~/.vim/.venv/bin/python3'
