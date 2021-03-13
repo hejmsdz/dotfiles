@@ -1,0 +1,44 @@
+#!/bin/zsh
+
+alias e=$EDITOR
+
+mkcd() {
+  mkdir -p "$1" && cd "$1"
+}
+
+killport() {
+  kill -9 $(lsof -i TCP:"$1" | grep LISTEN | awk '{print $2}')
+}
+
+alias pi="ssh pi"
+
+# python
+alias py="python3"
+alias pym="py -m"
+alias va=". .venv/bin/activate"
+alias ve="pym venv .venv && avenv"
+# alias ds=". $HOME/DataScience/.venv/bin/activate"
+alias ipy="pym IPython"
+alias jnb="pym jupyter notebook"
+alias serve="pym http.server"
+
+# javascript
+alias js="node"
+alias lserve="live-server"
+alias y="yarn"
+alias ys="yarn start"
+
+# open on macOS
+alias o=open
+alias a="o -a"
+alias f="o ."
+
+# homebrew
+alias b="brew"
+alias bi="b install"
+alias bic="bi --cask"
+alias bui="b uninstall"
+alias bud="b update"
+alias bug="b upgrade"
+alias bs="b search"
+

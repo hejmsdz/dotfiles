@@ -1,0 +1,52 @@
+# Source Prezto.
+if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
+  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+fi
+
+# Configure prompt
+SPACESHIP_CHAR_SYMBOL="➜ "
+SPACESHIP_PACKAGE_SHOW=false
+SPACESHIP_PROMPT_ORDER=(
+  user dir host git node ruby venv exec_time line_sep
+  jobs exit_code char
+)
+ 
+# Default commands
+export FZF_DEFAULT_COMMAND='fd --type file'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export VISUAL="nvim"
+export EDITOR="$VISUAL"
+
+# ctrl+u to delete until the beginning of line (bash-compatible) 
+bindkey \^U backward-kill-line
+
+# autojump
+. /opt/homebrew/share/autojump/autojump.zsh
+
+# nnn with cd on quit
+n() {
+  if [ -n $NNNLVL ] && [ "${NNNLVL:-0}" -ge 1 ]; then
+   echo "nnn is already running"
+   return
+  fi
+
+  export NNN_TMPFILE="${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.lastd"
+  nnn "$@"
+
+  if [ -f "$NNN_TMPFILE" ]; then
+    . "$NNN_TMPFILE"
+    rm -f "$NNN_TMPFILE" > /dev/null
+  fi
+}
+
+# Path extensions
+PATH="$PATH:$HOME/.bin"
+PATH="$PATH:$HOME/.npm-global/bin"
+
+source "$HOME/.aliases"
+
+# Load local config
+if [[ -s "$HOME/.zshrc.local" ]]; then
+  source "$HOME/.zshrc.local"
+fi
+
