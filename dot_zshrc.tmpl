@@ -21,7 +21,11 @@ export EDITOR="$VISUAL"
 bindkey \^U backward-kill-line
 
 # autojump
+{{ if (eq .chezmoi.os "darwin") }}
 . /opt/homebrew/share/autojump/autojump.zsh
+{{ else }}
+. /usr/share/autojump/autojump.zsh
+{{ end }}
 
 # nnn with cd on quit
 n() {
