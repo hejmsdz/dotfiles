@@ -10,6 +10,12 @@ killport() {
   kill -9 $(lsof -i TCP:"$1" | grep LISTEN | awk '{print $2}')
 }
 
+{{ if eq .chezmoi.os "linux" }}
+{{ if eq .chezmoi.osRelease.idLike "debian" }}
+alias fd="fdfind"
+{{ end }}
+{{ end }}
+
 alias pi="ssh pi"
 
 # chezmoi
