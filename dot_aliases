@@ -12,6 +12,15 @@ killport() {
 
 alias pi="ssh pi"
 
+# chezmoi
+alias cm="chezmoi"
+alias cme="cm edit"
+alias cma="cm add"
+alias cmA="cm apply"
+alias cmg="cm git"
+alias cmd="cm diff"
+alias cmc="cm cd"
+
 # python
 alias py="python3"
 alias pym="py -m"
