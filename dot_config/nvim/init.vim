@@ -45,7 +45,7 @@ set smartcase
 
 " key bindings
 set backspace=indent,eol,start
-nnoremap <leader[ :bprevious<CR>
+nnoremap <leader>[ :bprevious<CR>
 nnoremap <leader>] :bnext<CR>
 nnoremap <leader>x :bd<CR>
 nnoremap <leader>X :bd!<CR>
