@@ -11,6 +11,13 @@ killport() {
   kill -9 $(lsof -i TCP:"$1" | grep LISTEN | awk '{print $2}')
 }
 
+dotenv() {
+  file="${1:-.env}"
+  set -o allexport
+  source "${1:-.env}"
+  set +o allexport
+}
+
 {{ if eq .chezmoi.os "linux" }}
 {{ if eq .chezmoi.osRelease.idLike "debian" }}
 alias fd="fdfind"
@@ -32,7 +39,7 @@ alias cmc="cm cd"
 alias py="python3"
 alias pym="py -m"
 alias va=". .venv/bin/activate"
-alias ve="pym venv .venv && avenv"
+alias ve="pym venv .venv && va"
 # alias ds=". $HOME/DataScience/.venv/bin/activate"
 alias ipy="pym IPython"
 alias jnb="pym jupyter notebook"

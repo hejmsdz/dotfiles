@@ -22,9 +22,10 @@ if (has("termguicolors"))
   set termguicolors
 endif
 
-" indentation
+" indentation & wrapping
 filetype indent on
 set nowrap
+set linebreak
 set tabstop=2
 set shiftwidth=2
 set expandtab
@@ -35,7 +36,7 @@ set autoindent
 set hidden
 set splitbelow
 set updatetime=300
-set noshowcmd
+set showcmd
 
 " search
 set incsearch
@@ -53,6 +54,7 @@ nnoremap <leader><esc> :nohlsearch<CR>
 nnoremap <leader>p :Files<CR>
 nnoremap <leader>g :Rg 
 nnoremap <leader>\ :NERDTreeFind<CR>
+nnoremap <leader>w :set wrap!<CR>
 " Switch between different windows by their direction
 noremap <C-j> <C-w>j
 noremap <C-k> <C-w>k
