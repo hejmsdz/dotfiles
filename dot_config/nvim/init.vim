@@ -12,9 +12,9 @@ highlight CursorLine cterm=none
 
 " colors
 if (has("nvim"))
-   let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 else
-   set term=xterm-256color
+  set term=xterm-256color
 endif
 if (has("termguicolors"))
   let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
@@ -52,7 +52,7 @@ nnoremap <leader>x :bd<CR>
 nnoremap <leader>X :bd!<CR>
 nnoremap <leader><esc> :nohlsearch<CR>
 nnoremap <leader>p :Files<CR>
-nnoremap <leader>g :Rg 
+nnoremap <leader>g :Rg
 nnoremap <leader>\ :NERDTreeFind<CR>
 nnoremap <leader>w :set wrap!<CR>
 " Switch between different windows by their direction
@@ -77,9 +77,9 @@ inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
 
 noremap <F3> :Autoformat<CR>
 
-" edit and apply settings
-nnoremap <leader>, :edit $MYVIMRC<CR>
-command! Src source $MYVIMRC
+" edit and apply settings with chezmoi integration
+nnoremap <silent> <leader>, :execute "e " . system('chezmoi source-path $MYVIMRC')<CR>
+command! Src :execute ':silent !chezmoi apply $MYVIMRC' | source $MYVIMRC
 command! SudoW :execute ':silent w !sudo tee % > /dev/null' | :edit!
 
 " python
@@ -187,4 +187,3 @@ autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescriptreact
 
 " clipboard integration
 set clipboard=unnamedplus
-
