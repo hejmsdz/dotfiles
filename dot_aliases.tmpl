@@ -18,6 +18,21 @@ dotenv() {
   set +o allexport
 }
 
+unalias gco
+gco() {
+  if [[ "$#" -gt 0 ]]
+  then
+    git checkout $@
+    return
+  fi
+
+  branch=$(git branch --sort=-committerdate | fzf | tr -d '[[:space:]*]')
+  if [[ ! -z "$branch" ]]
+  then
+    git checkout "$branch"
+  fi
+}
+
 {{ if eq .chezmoi.os "linux" }}
 {{ if eq .chezmoi.osRelease.idLike "debian" }}
 alias fd="fdfind"
@@ -64,4 +79,3 @@ alias bui="b uninstall"
 alias bud="b update"
 alias bug="b upgrade"
 alias bs="b search"
-
