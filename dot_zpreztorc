@@ -44,7 +44,7 @@ zstyle ':prezto:load' pmodule \
   'prompt' \
   'tmux' \
   'git' \
-#  'ssh'
+  'ssh'
 
 #
 # Autosuggestions
@@ -165,7 +165,7 @@ zstyle ':prezto:module:prompt' theme 'spaceship'
 #
 
 # Set the SSH identities to load into the agent.
-# zstyle ':prezto:module:ssh:load' identities 'id_rsa' 'id_rsa2' 'id_github'
+zstyle ':prezto:module:ssh:load' identities 'id_rsa'
 
 #
 # Syntax Highlighting
