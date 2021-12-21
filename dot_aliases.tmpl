@@ -95,3 +95,9 @@ gbm() {
   vared branch
   git branch --move $branch
 }
+
+{{ if and (hasKey .chezmoi.kernel "osrelease") (contains "WSL" .chezmoi.kernel.osrelease) }}
+# wsl clipboard
+alias pbcopy="win32yank.exe -i"
+alias pbpaste="win32yank.exe -o"
+{{ end }}
